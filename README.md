@@ -2,7 +2,7 @@
 
 
 ## Overview
-The programconsists of a `go` script that interacts with a rollup server to handle requests for state advancement and inspection.
+The program consists of a `go` script that interacts with a rollup server to handle requests for state advancement and inspection.
 
 ## Dependencies
 
