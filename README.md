@@ -48,7 +48,7 @@ var (
 + `users` will store the users names.
 + `toUpperTotal` is a count of valid transactions.
 
-### Handle Advance Requests
+### Handle Advance Request
 Function receives and logs the advance request data.
 + Extracts the metadata, sender and payload.
 + Payload converts from hex to a string.
@@ -56,4 +56,11 @@ Function receives and logs the advance request data.
     - if true, an error is reported  using **`SendReport` function**.
 + User is added to `users` slice and `toUpperTotal` counter is incremented.
 + Sentence is converted to uppercase and a notice using **`SendNotice` function**.
++ Returns *nil* error.
+
+### Handle Inspect Request
+Function receives and logs the handle request data.
++ Extracts and decodes the payload.
++ Determines the route(`list` or `total`) and uses a switch case statement to give a response.
++ Response is sent using **`SendReport` function**.
 + Returns *nil* error.
