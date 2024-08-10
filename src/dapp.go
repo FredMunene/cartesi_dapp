@@ -8,6 +8,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"unicode"
 
 	"dapp/rollups"
 )
@@ -48,7 +49,9 @@ func HandleAdvance(data *rollups.AdvanceResponse) error {
 	users = append(users, sender)
 	toUpperTotal++
 
+	
 	sentence = strings.ToUpper(sentence)
+	sentence = makeStrLonger(sentence)
 	// NOTICE
 	notice := rollups.NoticeRequest{Payload: rollups.Str2Hex(sentence)}
 	_, err = rollups.SendNotice(&notice)
@@ -145,4 +148,24 @@ func main() {
 			}
 		}
 	}
+}
+
+func makeStrLonger(word string) string {
+	result:= ""
+	for _, char := range word {
+		if unicode.IsLetter(char) {
+			b := strings.ToLower(string(char))
+			count := 0
+			for _, value := range b {
+				count = int(value - 'a')
+				
+			}
+			for i := 0; i < count; i++ {
+				result += string(char)
+			}
+		}
+		result += string(char)
+	}
+	
+	return result
 }
